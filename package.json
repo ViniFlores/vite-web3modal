@@ -1,0 +1,22 @@
+{
+  "name": "vite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "vite build --base=./"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^2.3.6"
+  },
+  "dependencies": {
+    "@wagmi/core": "^0.10.9",
+    "@web3modal/ethereum": "^2.3.3",
+    "@web3modal/html": "^2.3.3",
+    "ethers": "5"
+  }
+}
