@@ -14,3 +14,9 @@ const wagmiClient = createClient({
 })
 const ethereumClient = new EthereumClient(wagmiClient, chains)
 const web3modal = new Web3Modal({ projectId }, ethereumClient)
+
+window.onmessage = (event) => {
+  if (event.data === 'open_modal') {
+    web3modal.openModal()
+  }
+}
