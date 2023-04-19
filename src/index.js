@@ -1,9 +1,10 @@
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum'
 import { Web3Modal } from '@web3modal/html'
 import { configureChains, createClient } from '@wagmi/core'
-import { arbitrum, mainnet, polygon } from '@wagmi/core/chains'
+import { arbitrum } from '@wagmi/core/chains'
 
-const chains = [arbitrum, mainnet, polygon]
+const chains = [arbitrum]
+console.log(chains)
 const projectId = '6d9615c65ff477eef9a17f3fcb18d598'
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })])
