@@ -1,17 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
-
 body {
-  font-family: "Roboto", sans-serif;
-  margin: 0;
-}
-
-.contact-list {
-  padding: 1em;
-}
-
-.contact-list .contact {
-  background-color: #eee;
-  border-radius: 0.5em;
-  padding: 1em;
-  margin-bottom: 1em;
+  background-color: rgba(100, 100, 100, 0.2);
+  min-height: 100vh;
 }
