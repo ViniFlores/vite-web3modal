@@ -19,6 +19,7 @@ const web3modal = new Web3Modal({ projectId }, ethereumClient)
 web3modal.setDefaultChain(arbitrum)
 
 window.onmessage = (event) => {
+  console.log('Message Received: ', event.data)
   if (event.data === 'open_modal') {
     web3modal.openModal()
   }
