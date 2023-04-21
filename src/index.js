@@ -42,7 +42,7 @@ window.onmessage = (event) => {
   console.log("Message Received: ", event.data);
   if (event.data.type === "open_modal") {
     console.log("Opening modal");
-    console.log(web3modal.openModal());
+    console.log(web3modal.openModal({ route: "ConnectWallet" }));
   }
 };
 
