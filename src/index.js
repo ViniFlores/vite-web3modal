@@ -44,6 +44,18 @@ window.onmessage = (event) => {
     web3modal.closeModal();
     console.log("Opening modal");
     web3modal.openModal();
+  } else if (event.data.type === "sign_typed_data") {
+    const { domain, types, message } = event.data.payload;
+    const signer = fetchSigner();
+    signer._signTypedData(domain, types, message).then((signature) => {
+      window.parent.postMessage(
+        {
+          type: "sign_typed_data_response",
+          payload: signature,
+        },
+        "*"
+      );
+    });
   }
 };
 
