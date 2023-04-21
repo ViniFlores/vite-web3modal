@@ -26,7 +26,6 @@ web3modal.setDefaultChain(arbitrum);
 web3modal.subscribeModal(async (state) => {
   if (state?.open === false) {
     const account = getAccount();
-    await web3modal.closeModal();
     window.parent.postMessage(
       {
         type: "modal_closed",
@@ -42,6 +41,7 @@ web3modal.subscribeModal(async (state) => {
 window.onmessage = (event) => {
   console.log("Message Received: ", event.data);
   if (event.data.type === "open_modal") {
+    web3modal.closeModal();
     console.log("Opening modal");
     web3modal.openModal();
   }
