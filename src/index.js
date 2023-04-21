@@ -24,7 +24,7 @@ web3modal.setDefaultChain(arbitrum);
 
 //Subscribe to modal state to send messages to the parent window
 web3modal.subscribeModal((state) => {
-  if (state?.open === "false")
+  if (state?.open === false)
     window.parent.postMessage(
       { type: "modal_closed", payload: getAccount() },
       "*"
