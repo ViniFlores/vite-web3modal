@@ -23,9 +23,10 @@ const web3modal = new Web3Modal({ projectId }, ethereumClient);
 web3modal.setDefaultChain(arbitrum);
 
 //Subscribe to modal state to send messages to the parent window
-web3modal.subscribeModal((state) => {
+web3modal.subscribeModal(async (state) => {
   if (state?.open === false) {
     const account = getAccount();
+    await web3modal.closeModal();
     window.parent.postMessage(
       {
         type: "modal_closed",
@@ -42,7 +43,7 @@ window.onmessage = (event) => {
   console.log("Message Received: ", event.data);
   if (event.data.type === "open_modal") {
     console.log("Opening modal");
-    console.log(web3modal.openModal({ route: "ConnectWallet" }));
+    web3modal.openModal();
   }
 };
 
