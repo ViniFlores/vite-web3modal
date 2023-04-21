@@ -58,11 +58,14 @@ window.onmessage = async (event) => {
     });
   } else if (event.data.type === "getAccount") {
     const account = getAccount();
-    window.parent.postMessage({
-      type: "getAccount_response",
-      payload: account.address
-        ? { address: account.address, type: account.connector.name }
-        : null,
-    });
+    window.parent.postMessage(
+      {
+        type: "getAccount_response",
+        payload: account.address
+          ? { address: account.address, type: account.connector.name }
+          : null,
+      },
+      "*"
+    );
   }
 };
