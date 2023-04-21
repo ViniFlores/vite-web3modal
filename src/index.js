@@ -39,7 +39,6 @@ web3modal.subscribeModal(async (state) => {
 });
 
 window.onmessage = async (event) => {
-  console.log(event);
   if (event.data.type === "open_modal") {
     web3modal.openModal();
   } else if (event.data.type === "sign_typed_data") {
