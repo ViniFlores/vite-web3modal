@@ -38,7 +38,7 @@ web3modal.subscribeModal(async (state) => {
   }
 });
 
-window.onmessage = (event) => {
+window.onmessage = async (event) => {
   console.log("Message Received: ", event.data);
   if (event.data.type === "open_modal") {
     web3modal.closeModal();
@@ -46,7 +46,7 @@ window.onmessage = (event) => {
     web3modal.openModal();
   } else if (event.data.type === "sign_typed_data") {
     const { domain, types, message } = event.data.payload;
-    const signer = fetchSigner();
+    const signer = await fetchSigner();
     signer._signTypedData(domain, types, message).then((signature) => {
       window.parent.postMessage(
         {
