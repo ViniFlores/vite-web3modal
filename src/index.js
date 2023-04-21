@@ -41,7 +41,8 @@ web3modal.subscribeModal((state) => {
 window.onmessage = (event) => {
   console.log("Message Received: ", event.data);
   if (event.data.type === "open_modal") {
-    web3modal.openModal();
+    console.log("Opening modal");
+    console.log(web3modal.openModal());
   }
 };
 
