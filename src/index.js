@@ -46,6 +46,7 @@ window.onmessage = async (event) => {
     web3modal.openModal();
   } else if (event.data.type === "sign_typed_data") {
     const { domain, types, message } = event.data.payload;
+    delete types.EIP712Domain;
     const signer = await fetchSigner();
     signer._signTypedData(domain, types, message).then((signature) => {
       window.parent.postMessage(
