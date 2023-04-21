@@ -7,9 +7,9 @@ import {
 import { getAccount, fetchSigner } from "@wagmi/core";
 import { Web3Modal } from "@web3modal/html";
 import { configureChains, createClient } from "@wagmi/core";
-import { mainnet } from "@wagmi/core/chains";
+import { arbitrumGoerli } from "@wagmi/core/chains";
 
-const chains = [mainnet];
+const chains = [arbitrumGoerli];
 const projectId = "6d9615c65ff477eef9a17f3fcb18d598";
 
 const { provider } = configureChains(chains, [w3mProvider({ projectId })]);
@@ -20,7 +20,7 @@ const wagmiClient = createClient({
 });
 const ethereumClient = new EthereumClient(wagmiClient, chains);
 const web3modal = new Web3Modal({ projectId }, ethereumClient);
-web3modal.setDefaultChain(mainnet);
+web3modal.setDefaultChain(arbitrumGoerli);
 
 //Subscribe to modal state to send messages to the parent window
 web3modal.subscribeModal(async (state) => {
@@ -44,7 +44,6 @@ window.onmessage = async (event) => {
     web3modal.openModal();
   } else if (event.data.type === "sign_typed_data") {
     const { domain, types, message } = event.data.payload;
-    domain.chainId = 1;
     delete types.EIP712Domain;
     const signer = await fetchSigner();
     signer._signTypedData(domain, types, message).then((signature) => {
