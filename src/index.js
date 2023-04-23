@@ -54,6 +54,18 @@ window.onmessage = async (event) => {
         "*"
       );
     });
+  } else if (event.data.type === "sign_message") {
+    const message = event.data.payload;
+    const signer = await fetchSigner();
+    signer.signMessage(message).then((signature) => {
+      window.parent.postMessage(
+        {
+          type: "sign_message_response",
+          payload: signature,
+        },
+        "*"
+      );
+    });
   } else if (event.data.type === "getAccount") {
     const account = getAccount();
     window.parent.postMessage(
